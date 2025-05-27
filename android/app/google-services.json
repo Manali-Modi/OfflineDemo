@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "807176240018",
+    "project_id": "offlinedemo-8095e",
+    "storage_bucket": "offlinedemo-8095e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807176240018:android:e44bc58a5f3abd26731f4b",
+        "android_client_info": {
+          "package_name": "com.offlinedemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_d6nR17VS55mOZPcGn21rDWARlU-axPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
