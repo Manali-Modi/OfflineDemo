@@ -1,4 +1,6 @@
 # Resolve react_native_pods.rb with node to allow for hoisting
+use_modular_headers!
+
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
     "react-native/scripts/react_native_pods.rb",
@@ -16,6 +18,13 @@ end
 
 target 'OfflineDemo' do
   config = use_native_modules!
+
+  pod 'FirebaseAuth', :modular_headers => true
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+  pod 'RecaptchaInterop', :modular_headers => true
+  pod 'FirebaseAppCheckInterop', :modular_headers => true
+  pod 'FirebaseAuthInterop', :modular_headers => true
 
   use_react_native!(
     :path => config[:reactNativePath],
