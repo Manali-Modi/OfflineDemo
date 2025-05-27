@@ -1,12 +1,13 @@
-import { View, Text, SafeAreaView, Platform, Image } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './AuthScreen.styles';
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
+import auth from '@react-native-firebase/auth';
 
 export default function LoginScreen(props: any) {
-  const [mail, setMail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [mail, setMail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const onMailChange = (value: string) => {
     setMail(value);
@@ -14,7 +15,16 @@ export default function LoginScreen(props: any) {
   const onPasswordChange = (value: string) => {
     setPassword(value);
   }
-  const onLoginPress = () => {
+  const onLoginPress = async () => {
+    try {
+      await auth().signInWithEmailAndPassword(mail, password);
+      props.navigation.navigate("profile");
+    } catch (error) {
+      Alert.alert("Email or password is incorrect");
+    }
+  };
+  const onSignupPress = () => {
+    props.navigation.navigate("signup");
   }
 
   return (
@@ -40,7 +50,9 @@ export default function LoginScreen(props: any) {
           title="Login"
           onPress={onLoginPress}
         />
-        <Text style={styles.lableTxt}>Don't have account ? Click here</Text>
+        <TouchableOpacity onPress={onSignupPress}>
+          <Text style={styles.lableTxt}>Don't have account ? Click here</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
